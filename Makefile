@@ -4,7 +4,7 @@ CC = sdcc
 MAX_ALLOCS_PER_NODE=10000
 EXTRACFLAGS =
 AS = sdasz80
-SDCCLIB = sdcclib
+SDCCLIB = "sdar r"
 
 all: libcv libcvu
 	cp libcv/bin/* bin/

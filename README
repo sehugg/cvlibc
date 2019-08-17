@@ -5,6 +5,7 @@ This is the colecovision library. It is meant for developing games and other app
 * SC-3000
 * Mark III
 * Master System
+* MSX 1 (minimal BIOS interaction)
 
 The library can be build using "make". Different versions will be built for the ColecoVision, and for the Sega consoles.
 

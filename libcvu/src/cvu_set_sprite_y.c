@@ -18,7 +18,7 @@
 #include "cv.h"
 #include "cvu_graphics.h"
 
-void cvu_set_sprite_y(struct cvu_sprite *sprite, int y)
+void cvu_set_sprite_y(struct cvu_sprite *sprite, int y) __preserves_regs(d, e)
 {
 	if(y > 207)
 		y = 207;

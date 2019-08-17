@@ -18,7 +18,7 @@
 #include "cv.h"
 #include "cvu_graphics.h"
 
-void cvu_set_sprite_x(struct cvu_sprite *sprite, int x)
+void cvu_set_sprite_x(struct cvu_sprite *sprite, int x) __preserves_regs(d, e)
 {
 	if(x < -32)
 		x = -32;

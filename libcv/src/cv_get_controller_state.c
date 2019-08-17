@@ -1,6 +1,6 @@
 #include "cv_input.h"
 
-#ifndef CV_SMS
+#ifdef CV_CV
 
 static const uint8_t keytable[16] = {0xf, 8, 4, 5, 0xf, 7, 0xb, 2, 0xf, 0xa, 0, 9, 3, 1, 6, 0xf};	// sdcc can't put local constants into ROM.
 
@@ -37,7 +37,9 @@ void cv_get_controller_state(struct cv_controller_state *state, uint_fast8_t con
   	state->joystick = joy;
 }
 
-#else
+#endif
+
+#ifdef CV_SMS
 
 static volatile __sfr __at 0xdc port0;
 static volatile __sfr __at 0xdd port1;
@@ -46,6 +48,22 @@ void cv_get_controller_state(struct cv_controller_state *state, uint_fast8_t con
 {
 	uint8_t joy = ~(!controller ? port0 : ((port0 >> 6) | (port1 << 2)));
 	state->joystick = joy & 0x3f;
+}
+
+#endif
+
+#ifdef CV_MSX
+
+static volatile __sfr __at 0xa0 psgreg;
+static volatile __sfr __at 0xa1 psgwrite;
+static volatile __sfr __at 0xa2 psgread;
+
+void cv_get_controller_state(struct cv_controller_state *state, uint_fast8_t controller)
+{
+	psgreg = 15;
+	psgwrite = controller ? 0x40 : 0x0; //select controller
+	psgreg = 14;
+	state->joystick = (~psgread) & 0x3f;
 }
 
 #endif

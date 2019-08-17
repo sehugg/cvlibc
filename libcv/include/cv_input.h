@@ -3,7 +3,7 @@
 
 #include <stdint.h>
 
-#ifndef CV_SMS
+#ifdef CV_CV
 
 #define CV_FIRE_0 0x40
 #define CV_FIRE_1 0x80
@@ -14,7 +14,20 @@
 #define CV_RIGHT 0x02
 #define CV_UP 0x01
 
-#else
+#endif
+
+#ifdef CV_SMS
+
+#define CV_UP 0x01
+#define CV_DOWN 0x02
+#define CV_LEFT 0x04
+#define CV_RIGHT 0x08
+#define CV_FIRE_0 0x10
+#define CV_FIRE_1 0x20
+
+#endif
+
+#ifdef CV_MSX
 
 #define CV_UP 0x01
 #define CV_DOWN 0x02

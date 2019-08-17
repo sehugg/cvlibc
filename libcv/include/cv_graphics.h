@@ -12,6 +12,7 @@
 */
 
 typedef uint16_t cv_vmemp; // 14-Bit video memory address type
+
 #ifdef CV_SMS
 typedef uint8_t cv_cmemp; // 5-bit color memory address type
 #endif
@@ -207,7 +208,11 @@ extern void cv_vmemset_slow(int c, size_t n) __preserves_regs(iyl, iyh);
 
 extern void cv_vmemset_fast(int c, size_t n) __preserves_regs(iyl, iyh);
 
+#ifdef CV_MSX
+static volatile __sfr __at 0x98 cv_graphics_port;
+#else
 static volatile __sfr __at 0xbe cv_graphics_port;
+#endif
 
 inline void cv_voutb(const uint8_t value)
 {

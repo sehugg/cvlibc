@@ -1,5 +1,7 @@
 #include "cv_sound.h"
 
+#ifndef CV_MSX
+
 #ifndef CV_SMS
 static volatile __sfr __at 0xff port;
 #else
@@ -12,3 +14,16 @@ void cv_set_frequency(enum cv_soundchannel channel, uint16_t frequency_divider)
 	port = (0x80 | (channel << 4) | (frequency_divider & 0xf));
 	port = (frequency_divider >> 4);
 }
+
+#else // MSX
+
+void cv_set_frequency(enum cv_soundchannel channel, uint16_t frequency_divider)
+{
+	frequency_divider = frequency_divider >> 5;
+	psg_port_register = channel;
+	psg_port_write = frequency_divider & 0xff;
+	psg_port_register = channel + 1;
+	psg_port_write = frequency_divider >> 8;
+}
+
+#endif

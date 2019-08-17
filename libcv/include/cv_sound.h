@@ -34,4 +34,10 @@ extern void cv_set_frequency(enum cv_soundchannel channel, uint16_t frequency_di
 
 extern void cv_set_noise(bool white, enum cv_shift shift);
 
+#ifdef CV_MSX
+static volatile __sfr __at 0xa0 psg_port_register;
+static volatile __sfr __at 0xa1 psg_port_write;
+static volatile __sfr __at 0xa2 psg_port_read;
+#endif
+
 #endif

@@ -36,13 +36,14 @@ extern void *cv_get_vint_handler(void);
 // Get the vertical retrace frequency in Hz. 50 for PAL, 60 for NTSC.
 unsigned char cv_get_vint_frequency(void);
 
-#ifndef CV_SMS
+#ifdef CV_CV
 enum cv_machine {
 	CV_COLECOVISION = 0,	// Coleco ColecoVision
 	//CV_ADAM = 1,	// Coleco Adam - TODO
 	//CV_SUPERGAME = 2, // Coleco ColecoVision with super game module
 };
-#else
+#endif
+#ifdef CV_SMS
 enum cv_machine {
 	CV_SG1000 = 0,	// Sega SG-1000
 	CV_SC3000 = 1,	// Sega SC-3000
