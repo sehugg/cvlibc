@@ -1,0 +1,27 @@
+This is a demo program for the colecovision library.
+
+It consists of a white cursor on black background that can be moved by:
+* The joystick
+* The super action controller weels
+* The roller controller
+
+Cursor.rom is a binary image for ColecoVision that can be burned on cartridges or used in an emulator.
+Cursor.ihx is an image for ColecoVision in Intel hex format that can be burned on cartridges.
+Cursor.png contains the image used for the cursor.
+main.c contains the program's source code.
+
+cursor.png.sprite.c has been generated from cursor.png using
+png2cvs --big cursor.png
+
+main.o has been generated from main.c using
+sdcc -mz80 -c "-I../../include/" main.c
+
+cursor.png.sprite.o has been generated from cursor.png.sprite.c using
+sdcc -mz80 -c "-I../../include/" cursor.png.sprite.c 
+
+crt0.ihx has been generated from main.o and cursor.png.sprite.o using
+sdcc -mz80 --no-std-crt0 --code-loc 0x8100 --data-loc 0x7000 "../../bin/libcvu.lib" "../../bin/libcv.lib" "../../bin/crt0.rel" *.rel -o Cursor.ihx
+
+Cursor.rom has been generated from Cursor.ihx using
+objcopy --input-target=ihex --output-target=binary Cursor.ihx Cursor.rom
+

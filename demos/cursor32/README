@@ -1,0 +1,15 @@
+This is a demo program for the colecovision library.
+
+It consists of 32 white cursors on black background that can be moved by the joystick.
+You can cycle through the cursors using the fire buttons.
+
+Cursor32.rom is a binary image for ColecoVision that can be burned on cartridges or used in an emulator.
+Cursor32.ihx is an image for ColecoVision in Intel hex format that can be burned on cartridges.
+Cursor32.sms is a binary image for Sega Master System that can be burned on cartridges or used in an emulator.
+Cursor32-sms.ihx is an image for Sega Master System in Intel hex format that can be burned on cartridges.
+Cursor.png contains the image used for the cursor.
+main.c contains the program's source code.
+
+Type "make" to generate Cursor.ihx and cursor.rom from the input files.
+Type "make clean" to remove all generated files except Cursor.rom.
+

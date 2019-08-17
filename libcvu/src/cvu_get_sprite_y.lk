@@ -1,0 +1,10 @@
+-mjwx
+-i cvu_get_sprite_y.ihx
+-b _CODE = 0x0200
+-b _DATA = 0x8000
+-k /home/philipp/sdcc-trunk/sdcc/bin/../share/sdcc/lib/z80
+-k /usr/local/share/sdcc/lib/z80
+-l z80
+cvu_get_sprite_y.rel
+
+-e

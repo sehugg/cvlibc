@@ -1,0 +1,12 @@
+This is a demo program for the colecovision library.
+
+It shows how to use compression for graphics data.
+It will display a blank screen while decompressing.
+After that it will display picture.png.
+The sample picture included is compressed from 12K to 2K.
+
+Type "make" to generate Cursor.ihx and cursor.rom from the input files.
+Type "make clean" to remove all generated files except Cursor.rom.
+
+The Makefile assumes that png2cv is installed and the compression tools live in ../../../compression.
+

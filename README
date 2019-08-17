@@ -1,0 +1,43 @@
+This is the colecovision library. It is meant for developing games and other applications for the following video game systems, and makes portability easy.
+
+* ColecoVision
+* SG-1000
+* SC-3000
+* Mark III
+* Master System
+
+The library can be build using "make". Different versions will be built for the ColecoVision, and for the Sega consoles.
+
+The most recent version and tutorials can be found at http://www.colecovision.eu.
+
+It consists three parts:
+
+libcv: A low level library to provide access to the video game system hardware from C.
+libcvu: A higher-level library that builds on libcv and provides convenience functions. 
+demos: Various demo programs showing how to use the library.
+
+Example:
+libcv provides functions to set the graphics memory access pointer and different functions to transfer data from/to graphics memory.
+libcvu provides a cvu_memtovmemcpy(), which copies data from memory to graphics memory. It takes three arguments: Destination, pointer to source, number of bytes to copy. It uses libcv to set the graphics memory acces pointer and selects the correct data transfer function depending on current screen mode.
+
+All libcv and libcvu functions are documented in the header files.
+
+The implementation of some libcv and libcvu functions is hand-optimized assembler.
+
+
+© 2006-2016 Philipp Klaus Krause
+
+This library is free software; you can redistribute it and/or
+modify it under the terms of the GNU Lesser General Public
+License as published by the Free Software Foundation; either
+version 2.1 of the License, or (at your option) any later version.
+
+This library is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public
+License along with this library; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+

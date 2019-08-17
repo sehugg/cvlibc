@@ -1,0 +1,11 @@
+This is the simple music demo.
+
+You can compile it by typing "make".
+
+The ROM image for ColecoVision is Music.rom
+The ROM image for Sega Master system is Music.sms
+
+Running the ROM will display a blank screen and play "Down by the River Side" from O'Neill's collection of Irish tunes.
+
+This demo has been created for and is discussed in the music tutorial at http://www.colecovision.eu.
+

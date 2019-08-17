@@ -1,0 +1,170 @@
+libcv / libcvu
+0.9 / 0.2:
+	libcv: Fixed bug in cv_vmemtomemcpy(), cv_vmemset() with argument n % 256 == 0.
+
+0.10 / 0.3:
+	demos: Changed cursor demo to not use undocumented features of the graphics chip.
+	libcv: Use <stdbool.h> available in latest sdcc versions.
+	libcv: Enabled support for third and fourth fire buttons on super action controller.
+	libcv: Cleaned startup code.
+	libcv: Optimized cv_memtovmemcpy_slow() (used by cv_memtovmemcpy()) for code size a little bit.
+	libcv: Improved speed of cv_vmemset_slow().
+	libcvu: Use <stdbool.h> available in latest sdcc versions.
+	libcvu: Made cvu music support const-correct.
+	libcvu: Implemented cvu_set_sprite_x() in assembler to improve speed and reduce code size.
+	libcvu: Added empty music tune.
+	libcvu: cvu_music structs are now initialized to empty music by default.
+	libcvu: Optimized hand-coded assembler for cvu_set_sprite_y() a bit more for speed and code size.
+
+0.11 / 0.4:
+	reorganized source files
+	demos: Added compression demo
+	libcv: Removed outdated documentation
+	libcvu: Added decompression support
+
+0.12 / 0.5:
+	THIS RELEASE IS NOT SOURCE COMPATIBLE WITH OLDER VERSIONS.
+	Moved some higher-level graphics memory access functions to libcvu.
+	Everything referencing the vertical retrace interrupt renamed to "vint" from "nmi".
+	Use --opt-code-size compiler option, since it makes a difference in current sdcc.
+	Added README file.
+	demos: Improved documentation and Makefiles.	
+	libcv: Exposed some low-level graphics memory access functions.
+	libcv: Moved stack to gain 1 byte of RAM.
+	libcv: Fixed spelling error in cv_sound.h.
+	libcvu: Added new cvu_set_sprite_xy().
+	libcvu: reorganized compression functions.
+
+0.13 / 0.6:
+	demos: Converted compression demo: Use cvu_voutb() instead of the old cv_voutb() from pre-0.12 libcv.
+	libcvu: Fixed Makefile bug resulting in cvu_memcpy_compression() not included in libcvu.
+	libcvu: Added missing extern in declaration of _common_state in cvu_memcpy_compression.c
+
+0.14 / 0.7:
+	libcvu: Removed superfluous ; in cvu_set_sprite_color macro in cvu_graphics.h
+	libcv: Implemented cv_voutb in assembler. Speed quadrupled.
+
+0.15 / 0.8:
+	Suggested compiler: SDCC 2.7.0
+	Added reference to tutorials at http://www.colecovision.eu to README file.
+	demos: Converted cursor and cursor32 demo to use new function names (introduced in 0.12 / 0.5).
+
+0.16 / 0.9:
+	Suggested compiler: SDCC 2.8.0 to 2.9.0
+	Added #define bool BOOL whereever stdbool.h is included since sdcc no longer supports bool.
+	libcv: Removed internal inb(), outb() functions, use sdcc-specific sfr keyword for I/O instead.
+	libcv: Fixed typo in cv_get_sprite_collission function name in cv_graphics.h
+	libcv: Fixed cv_get_sprite_collission(), cv_get_sprite_invalid().
+	libcv: Changed semantics of cv_get_sprite_invalid(): Will only give fifth sprite if argument is not a 0 pointer.
+	libcvu: Rewrote cvu_get_sprite_y.s, now 16 bytes instead of 21.
+
+0.17 / 0.10:
+	Suggested compiler: SDCC 2.8.0 to 2.9.0
+	libcv: Made default value from cv_get_controller_state() for no key pressed / error 0xf as documented in cv_input.h (was 0xff).
+	libcv: Increased speed of cv_memtovmemcpy_slow() from 8.9 µs / Byte to 8.4 µs / Byte.
+	libcv: Improved cv_vdpout() speed a bit.
+	libcvu: Made cvu_play_music() play notes one octave higher instead of undefined behaviour for notes that demand frequencies lower than the CV's sound chip can do.
+	libcvu: Fixed cvu_play_music() bug that made notes 1/60 s longer which was a problem for long multichannel tunes, where voices drifted from each other.
+	libcvu: Changed default speed of music from 12 sixteenth notes per second to 10 sixteenths notes per second for more accurate music playback on PAL ColecoVisions  (both NTSC and PAL ColecoVision's vint frequency are divided evenly by 10).
+	libcvu: Fixed bug that made sprites with negative y coordinates appear one pixel off their correct position.
+	libcvu: Improved comments in cvu_sound.h
+
+0.18 / 0.11:
+	Suggested compiler: SDCC 2.9.0
+	libcv: Cleaned up Makefile, changed to new style assembler invocation.
+	libcvu: Cleaned up Makefile, changed to new style assembler invocation.
+	libcvu: Added support for 10.6 fixed point type cvu_f, including multiplication, division, sine and cosine.
+	demos: Added two music demos.
+	libcvu: Changed wording from "NMI handler" to "vint handler" in cvu_sound.h.
+	libcvu: Restricted pointer arguments in compression initialization functions.
+
+0.19 / 0.12:
+	Suggested compiler: SDCC 3.0.0 to 3.2.0
+	libcv: Made Makefile use new assembler name.
+	libcvu: Made Makefile use new assembler name.
+	libcvu: Changed cvu_i2f, cvu_f2i macros to CVU_I2F, CVU_F2I.
+	libcv: Use bool from <stdbool.h>, since sdcc supports it.
+	libcv: Compile in C99 mode instead of sdcc-specific dialect of C99.
+	libcv: Use __at, __sfr, __asm, __endasm instead of deprecated at, sfr, _asm, _endasm.
+	libcv: Use new .rel ending for object files insted of .o.
+	libcvu: Compile in C99 mode instead of sdcc-specific dialect of C99.
+	libcvu: Use new .rel ending for object files insted of .o.
+	demos: Explicitly specified .ihx output file name in Makefiles.
+	demos: Updated cursor demo README to reflect new linker behaviour.
+	libcvu: moved music initialization function to separate source file.
+	libcvu: Use bool from <stdbool.h>, since sdcc supports it.
+	libcv: Fixed typo in comment in cv_graphics.h
+	libcvu: Support for LZK decompression.
+	licvu: Added upport for fixed point complex cvu_c type, including multiplication, scalar multiplication and dot product.
+	libcvu: Added CVU_F_MIN, CVU_F_MAX defines.
+	libcvu: Added cvu_c_from_polar(), cvu_fatan2().
+	libcvu: Fixed typo in comment in cvu_f.h.
+	demos: Use new .rel ending for object files instead of .o, updated Makefiles and README accordingly.
+	libcvu: Small speed and code size improvement in cvu_fmul2().
+	libcvu: Reformatted cvu_get_sprite_y.s.
+	libcvu: Improved cvu_fdiv2() speed and size.
+	libcvu: Fixed default music loudness table inversion.
+
+0.20 / 0.13:
+	Suggested compiler: SDCC 3.1.0 to 3.2.0
+	libcvu: Moved tunings to separate files.
+	libcv: Removed obsolete inb.s and outb.s.
+	libcvu: Fixed Makefile bug that prevented scientific equal tuning from being built.
+	demos: Fixed music demo Makefile that still used .o instead of .rel in some places.
+	Added MAX_ALLOCS_PER_NODE parameter in build system.
+	libcvu: Qualify some more pointers as restrict.
+	libcv: Slightly more efficient usage of bool in cv_set_sprite_magnification() and cv_set_external_video().
+	Made build system more flexible to work better with nonstandard tool paths.
+	demos: Cleanup *.lk in stars demo.
+
+0.21 / 0.13:
+	Suggested compiler: SDCC 3.2.0
+	libcv: Initialize RAM to zero in crt0 to ensure that global and static variables are initialized to zero as required by the C standard.
+	libcv: Do not explicitly initialize cv_vint_handler and cv_vdpreg[0] to zero (since they're implicitly initialized anyway).
+	demos: Make sprites transparent in compression demo.
+
+0.22 / 0.14:
+	Suggested compiler: SDCC 3.3.0 to 3.4.0
+	libcv: Support for more efficient initialization, as used by sdcc 3.3.0 in crt0.s.
+	libcv: Some documenting comments in cv.h.
+	libcv: Support for interrupt for roller controller and super action controller wheel.
+	libcv: Move startup code to _CODE section in crt0.s for more flexible ROM use.
+	libcv: Documented BIOS stuff in header in crt0.s
+	libcvu: Support for roller controller and super action controller wheel.
+	demos: Removed assembler variables in cursor32 Makefile.
+	demos: Recreated cursor.png.sprite.c.
+	demos: Added cursorsmooth demo for spinner.
+	libcvu: Fix include guard in cvu_compression.h.
+	libcv: Use only Unix line endings.
+	libcvu: Use only Unix line endings.
+
+0.23 / 0.15:
+	Suggested compiler: SDCC 3.5.0 or newer
+	Clarified license as LGPL-2.1
+	libcv: Name change of sdcc function pointer call helper.
+	libcv: Made cv_vinb() and cvu_voutb() inline for speed.
+	libcvu: Speed up playing of music, elimiate dependency on integer division, fix synchronization of multivoice music when vint frequency is not a multiple of sixteenth_notes_per_second.
+
+0.24 / 0.16:
+	Suggested compiler: SDCC 3.6.0 or newer
+	libcv: Basic SMS port
+	demos: Basic SMS port
+	libcv: Specify preserved registers for asm-implemented functions.
+	libcv: Optimize return address handling in cv_vmemset_fast(), cv_vmemset_slow().
+	libcvu: Specify preserved registers for asm-implemented functions.
+	libcvu: Replaced some macros by inline functions.
+	demos: Add machine detection demo.
+	libcv: Add delay to cv_voutb(), cv_vinb() to always meet graphics chip timings.
+	libcv: Improve cv_vmemtomemcpy_slow() speed.
+	libcv: cv_get_r() to get the contents of the Z80 refresh register r.
+	libcv: Fixes in support for super action controller spinners and roller controller.
+	demos: Fix cursorsmooth demo for roller controller.
+
+0.24 / 0.17:
+	libcvu: Minor efficiency improvement in cvu_get_sprite_x().
+	libcvu: Fix behaviour of cvu_get_sprite_y() for sprites off the upper edge of the screen.
+	libcvu: Fix cvu_memcpy_compression() return value.
+	libcvu: Fixed incorrect use of restrict on function pointer in cvu_init_huffman(), cvu_init_rle() and cvu_init_lzk().
+
+UPDATE VERSION NUMBERS IN cv.h / cvu.h WHEN RELEASING A NEW VERSION!
+

@@ -1,0 +1,8 @@
+This is the music demo.
+
+You can compile it by typing "make".
+
+Running the ROM will display a selection screen that lets you choose from six of Mozart's twelve horn duets. On the ColecoVision, the demo uses the keypad for input, on the Sega systems it uses the fire buttons.
+
+This demo has been created for and is discussed in the music tutorial at http://www.colecovision.eu.
+
